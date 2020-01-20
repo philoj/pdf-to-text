@@ -22,7 +22,5 @@ if __name__ == '__main__':
     dpi = args.dpi
     print(f"Parsing file: {file_path} with dpi: {dpi}..")
     pages = convert_from_path(pdf_path=file_path, dpi=dpi)
-    content = []
-    for page in pages:
-        content.append(pytesseract.image_to_string(image=page))
+    content = (pytesseract.image_to_string(image=page) for page in pages)
     print('\n--page--\n'.join(content))
