@@ -1,0 +1,1 @@
+- Make sure tesseract is installed and is executable. see: https://github.com/tesseract-ocr/tesseract/wiki
