@@ -4,10 +4,8 @@ Utilizes tesseract ocr engine, make sure it is installed properly.
 """
 import argparse
 
-from pdf2image import convert_from_path
-from pytesseract import pytesseract
+from utils.pdf import DEFAULT_DPI, pdf_to_text
 
-DEFAULT_DPI = 300
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Process pdf files from a traditional scanner and extract plaintext content from it')
@@ -21,6 +19,4 @@ if __name__ == '__main__':
     file_path = args.filename[0]
     dpi = args.dpi
     print(f"Parsing file: {file_path} with dpi: {dpi}..")
-    pages = convert_from_path(pdf_path=file_path, dpi=dpi)
-    content = (pytesseract.image_to_string(image=page) for page in pages)
-    print('\n--page--\n'.join(content))
+    print(pdf_to_text(file_path=file_path, dpi=dpi))
