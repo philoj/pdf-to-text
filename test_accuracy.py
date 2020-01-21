@@ -29,6 +29,7 @@ if __name__ == '__main__':
         with open(f"{file_path[:-3]}txt") as original_text_file:
             scanned_text = pdf_to_text(file_path=file_path, dpi=dpi)
             original_text = original_text_file.read()
+            # result is a list of 2-tuples in the form: (%accuracy, file path)
             accuracy_data.append((diff_percentage(original_text, scanned_text), file_path))
     for data in accuracy_data:
         print(data)
